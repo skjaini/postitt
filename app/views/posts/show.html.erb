@@ -1,0 +1,19 @@
+<h4>Showing Post:</h4>
+<%= link_to @post.title, fix_url(@post.url) %>
+
+<%= render 'shared/errors', obj: @comment %>
+
+<h5>Add a comment:</h5>
+	<%= form_for [@post, @comment] do |f| %>
+	<%= f.label :body %>
+	<%= f.text_area :body %>
+	<br />
+	<%= f.submit 'Create Comment' %>
+<% end %>
+
+<h5>Comments:</h5>
+<ul>
+	<% @post.comments.each do |comment| %>
+		<li><%= comment.body %></li>
+	<% end %>
+</ul>
